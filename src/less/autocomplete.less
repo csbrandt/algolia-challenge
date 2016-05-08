@@ -1,0 +1,70 @@
+.autocomplete {
+   width: 100%;
+   z-index: 1;
+
+   .input,.hint {
+      width: 100%;
+   }
+
+   .hint {
+      color: #999;
+   }
+
+   .dropdown-menu {
+      width: 100%;
+      background-color: #fff;
+      border: 1px solid #999;
+      border-top: none;
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      z-index: 100;
+      right: auto;
+
+      hr {
+         margin: 0;
+      }
+
+      table {
+         margin-bottom: 0;
+      }
+
+      td {
+         vertical-align: top;
+         min-width: 210px;
+         max-width: 270px;
+         border-left: 1px solid #ccc;
+      }
+
+      .suggestion {
+         cursor: pointer;
+         padding: 5px 4px;
+
+         .thumbnail > img {
+            max-height: 75px;
+         }
+
+         p {
+            margin-bottom: 0;
+         }
+
+         &:hover {
+            background-color: #D3E3F9;
+         }
+
+         em {
+            color: #1b75ce;
+            font-weight: bold;
+            font-style: normal;
+         }
+      }
+
+      .column-label {
+         padding-left: 5px;
+         padding-top: 5px;
+         text-transform: uppercase;
+         font-size: 0.85em;
+         font-weight: 700;
+      }
+   }
+}

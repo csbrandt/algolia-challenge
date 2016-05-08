@@ -1,0 +1,12 @@
+<ul>
+   {{#each recommended.hits}}
+      <li class="suggestion">
+         <div class="thumbnail push-left">
+            <img src="{{image}}">
+         </div>
+         <div>
+            <p class="small">{{{_highlightResult.name.value}}}</p>
+         </div>
+      </li>
+   {{/each}}
+</ul>
