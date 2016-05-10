@@ -12,10 +12,4 @@ var brands = _.map(_.uniq(_.map(products, 'brand')), function(brand) {
    }
 });
 
-var categories = _.map(_.uniq(_.map(products, 'brand')), function(brand) {
-   return {
-      brand: brand
-   }
-});
-
 fs.writeFileSync(__dirname + '/brand.json', JSON.stringify(brands));
