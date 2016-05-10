@@ -5,7 +5,6 @@ var recommendedTemplateText = require('../template/recommended.html');
 var menuTemplateText = require('../template/menu.html');
 var algoliasearch = require('algoliasearch');
 var client = algoliasearch('I5YMQQ8937', '50fa2c1a43ffa2fff2d98c02e6a7a30f');
-var products = client.initIndex('best-buy');
 
 Handlebars.registerPartial('keyword', keywordTemplateText);
 Handlebars.registerPartial('brand', brandTemplateText);
