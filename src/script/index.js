@@ -29,10 +29,35 @@ function hideAutocomplete() {
 function resultsCallback(response) {
    showAutocomplete();
    dropdownMenu.innerHTML = menuTemplate({
-      keyword: response.results[0],
+      keyword: filterUniqueCategories(response.results[0].hits, 8),
       brand: response.results[1],
-      recommended: response.results[2]
+      recommended: {hits: response.results[0].hits.splice(0, 4)}
    });
+}
+
+function filterUniqueCategories(hits, amount) {
+   var uniqueCategories = [];
+   var categories = hits.map(function(hit) {
+      return hit._highlightResult.categories.map(function(category) {
+         return category.value;
+      });
+   });
+
+   uniqueCategories = Array.prototype.concat.apply([], categories).filter(function(category, index, self) {
+      return self.indexOf(category) === index;
+   });
+
+   return {
+      hits: uniqueCategories.map(function(category) {
+         return {
+            _highlightResult: {
+               categories: {
+                  value: category
+               }
+            }
+         }
+      }).slice(0, amount)
+   };
 }
 
 function handleInput() {
@@ -42,19 +67,15 @@ function handleInput() {
          indexName: 'best-buy',
          query: this.value,
          params: {
-            hitsPerPage: 6
+            hitsPerPage: 6,
+            attributesToRetrieve: 'name,url,image',
+            attributesToHighlight: 'categories,name'
          }
       }, {
          indexName: 'best-buy-brand',
          query: this.value,
          params: {
             hitsPerPage: 6
-         }
-      }, {
-         indexName: 'best-buy',
-         query: this.value,
-         params: {
-            hitsPerPage: 4
          }
       }];
 

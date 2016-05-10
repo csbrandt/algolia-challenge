@@ -48,9 +48,6 @@ gulp.task 'copy', ['clean'], ->
    gulp.src(config.inputDir + '/index.html')
       .pipe gulp.dest(config.outputDir)
 
-   gulp.src([config.inputDir + '/views/**/*'])
-      .pipe(gulp.dest(config.outputDir + '/views'))
-
 gulp.task 'build', ['clean'], ->
    bundle(config)
 
